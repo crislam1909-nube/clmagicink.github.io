@@ -3,21 +3,18 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
 <title>CL MAGIC INK</title>
 
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;500;700&display=swap" rel="stylesheet">
 
 <style>
 
-/* ANIMACIONES BASE */
-
+/* Animaciones scroll */
 .hidden {
   opacity: 0;
   transform: translateY(40px);
   transition: all 1s ease;
 }
-
 .show {
   opacity: 1;
   transform: translateY(0);
@@ -26,13 +23,22 @@
 .click-anim {
   transition: 0.3s;
 }
-
 .click-anim:active {
   transform: scale(0.95);
 }
 
-/* ESTILO GENERAL */
+/* Video fondo */
+.bg-video {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  top: 0;
+  left: 0;
+  z-index: -1;
+}
 
+/* Base */
 body {
   margin: 0;
   font-family: 'Inter', sans-serif;
@@ -46,12 +52,19 @@ section {
   text-align: center;
 }
 
+/* Hero */
 .hero {
+  position: relative;
   height: 100vh;
   display: flex;
   justify-content: center;
   align-items: center;
   flex-direction: column;
+  color: white;
+}
+
+.hero-content {
+  z-index: 2;
 }
 
 .hero h1 {
@@ -63,8 +76,8 @@ section {
 
 .hero p {
   font-size: 22px;
-  color: #666;
   margin-top: 15px;
+  opacity: 0.9;
 }
 
 @keyframes fadeHero {
@@ -72,21 +85,22 @@ section {
   to {opacity:1; transform:translateY(0);}
 }
 
+/* Botón */
 .btn {
   margin-top: 30px;
   padding: 14px 34px;
-  background: black;
-  color: white;
+  background: white;
+  color: black;
   text-decoration: none;
   border-radius: 30px;
   font-size: 16px;
   transition: 0.3s;
 }
-
 .btn:hover {
-  background: #333;
+  background: #ddd;
 }
 
+/* Productos */
 .products {
   background: #f5f5f7;
 }
@@ -95,17 +109,16 @@ section {
   max-width: 800px;
   margin: 60px auto;
 }
-
 .card h2 {
   font-size: 44px;
   margin-bottom: 10px;
 }
-
 .card p {
   font-size: 20px;
   color: #555;
 }
 
+/* Galería */
 .gallery img {
   width: 300px;
   margin: 15px;
@@ -113,6 +126,7 @@ section {
   box-shadow: 0 20px 40px rgba(0,0,0,0.1);
 }
 
+/* Footer */
 footer {
   background: #111;
   color: #aaa;
@@ -125,17 +139,25 @@ footer {
 
 <body>
 
+<!-- HERO VIDEO -->
 <section class="hero hidden">
 
+<video autoplay muted loop playsinline class="bg-video">
+  <source src="video.mp4" type="video/mp4">
+</video>
+
+<div class="hero-content">
 <h1>CL MAGIC INK</h1>
 <p>Publicidad que se siente premium</p>
 
 <a class="btn click-anim" href="https://wa.me/525610581418">
 Cotizar ahora
 </a>
+</div>
 
 </section>
 
+<!-- PRODUCTOS -->
 <section class="products hidden">
 
 <div class="card">
@@ -155,6 +177,7 @@ Cotizar ahora
 
 </section>
 
+<!-- GALERÍA -->
 <section class="hidden">
 
 <h2 style="font-size:48px;">Trabajos reales</h2>
@@ -169,6 +192,7 @@ Cotizar ahora
 
 </section>
 
+<!-- CONTACTO -->
 <section class="hidden">
 
 <h2 style="font-size:48px;">Confianza total</h2>
@@ -188,7 +212,6 @@ Hablar por WhatsApp
 </footer>
 
 <script>
-
 const observer = new IntersectionObserver(entries => {
   entries.forEach(entry => {
     if (entry.isIntersecting) {
@@ -198,7 +221,6 @@ const observer = new IntersectionObserver(entries => {
 });
 
 document.querySelectorAll(".hidden").forEach(el => observer.observe(el));
-
 </script>
 
 </body>

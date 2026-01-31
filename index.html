@@ -35,7 +35,18 @@
   object-fit: cover;
   top: 0;
   left: 0;
-  z-index: -1;
+  z-index: 0;
+}
+
+/* Overlay oscuro */
+.overlay {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background: rgba(0,0,0,0.35);
+  top: 0;
+  left: 0;
+  z-index: 1;
 }
 
 /* Base */
@@ -61,9 +72,11 @@ section {
   align-items: center;
   flex-direction: column;
   color: white;
+  overflow: hidden;
 }
 
 .hero-content {
+  position: relative;
   z-index: 2;
 }
 
@@ -145,6 +158,8 @@ footer {
 <video autoplay muted loop playsinline class="bg-video">
   <source src="video.mp4" type="video/mp4">
 </video>
+
+<div class="overlay"></div>
 
 <div class="hero-content">
 <h1>CL MAGIC INK</h1>

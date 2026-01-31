@@ -8,7 +8,9 @@
 
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;500;700&display=swap" rel="stylesheet">
 
-<style>/* ANIMACIONES */
+<style>
+
+/* ANIMACIONES BASE */
 
 .hidden {
   opacity: 0;
@@ -29,6 +31,7 @@
   transform: scale(0.95);
 }
 
+/* ESTILO GENERAL */
 
 body {
   margin: 0;
@@ -55,12 +58,18 @@ section {
   font-size: 64px;
   margin: 0;
   font-weight: 700;
+  animation: fadeHero 1.5s ease forwards;
 }
 
 .hero p {
   font-size: 22px;
   color: #666;
   margin-top: 15px;
+}
+
+@keyframes fadeHero {
+  from {opacity:0; transform:translateY(60px);}
+  to {opacity:1; transform:translateY(0);}
 }
 
 .btn {
@@ -110,14 +119,6 @@ footer {
   padding: 60px;
   font-size: 14px;
 }
-.hero h1 {
-  animation: fadeHero 1.5s ease forwards;
-}
-
-@keyframes fadeHero {
-  from {opacity:0; transform:translateY(60px);}
-  to {opacity:1; transform:translateY(0);}
-}
 
 </style>
 </head>
@@ -126,17 +127,16 @@ footer {
 
 <section class="hero hidden">
 
-
 <h1>CL MAGIC INK</h1>
 <p>Publicidad que se siente premium</p>
 
 <a class="btn click-anim" href="https://wa.me/525610581418">
 Cotizar ahora
 </a>
+
 </section>
 
 <section class="products hidden">
-
 
 <div class="card">
 <h2>DTF Textil</h2>
@@ -155,7 +155,7 @@ Cotizar ahora
 
 </section>
 
-<section>
+<section class="hidden">
 
 <h2 style="font-size:48px;">Trabajos reales</h2>
 
@@ -169,7 +169,7 @@ Cotizar ahora
 
 </section>
 
-<section>
+<section class="hidden">
 
 <h2 style="font-size:48px;">Confianza total</h2>
 
@@ -187,7 +187,8 @@ Hablar por WhatsApp
 © 2026 CL MAGIC INK — Agencia creativa premium
 </footer>
 
-</body><script>
+<script>
+
 const observer = new IntersectionObserver(entries => {
   entries.forEach(entry => {
     if (entry.isIntersecting) {
@@ -197,6 +198,8 @@ const observer = new IntersectionObserver(entries => {
 });
 
 document.querySelectorAll(".hidden").forEach(el => observer.observe(el));
+
 </script>
 
+</body>
 </html>
